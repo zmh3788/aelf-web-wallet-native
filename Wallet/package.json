@@ -7,8 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@ant-design/react-native": "^3.1.6",
     "@tradle/react-native-http": "^2.0.1",
-    "aelf-sdk": "^3.0.2",
+    "aelf-sdk": "^3.0.3",
     "assert": "^1.4.1",
     "browserify-zlib": "^0.1.4",
     "buffer": "^4.9.1",
@@ -30,6 +31,7 @@
     "react-native-level-fs": "^3.0.1",
     "react-native-os": "^1.2.2",
     "react-native-randombytes": "^3.5.2",
+    "react-native-router-flux": "^4.0.6",
     "react-native-tcp": "^3.3.0",
     "react-native-udp": "^2.6.0",
     "readable-stream": "^1.0.33",
