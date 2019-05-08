@@ -48,6 +48,8 @@
 * Same-origin policy checks and CORS
 * cookie processing
 
+### 未发送请求
+
 因为 ```global.location``` 为 undefined  导致直接catch
 
 解决办法：
