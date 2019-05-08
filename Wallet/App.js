@@ -11,6 +11,7 @@ import {Router, Scene} from 'react-native-router-flux';
 
 import Home from './app/js/Home/Home';
 import MultiTokenTransfer from './app/js/MultiTokenTransfer/MultiTokenTransfer';
+import QRCode from './app/js/QRCode/QRCode';
 
 export default class App extends Component {
     render() {
@@ -27,6 +28,11 @@ export default class App extends Component {
                           key='multiTokenTransfer'
                           title='MultiTokenTransfer'
                           component={MultiTokenTransfer}
+                      />
+                      <Scene
+                          key='qrCode'
+                          title='扫描二维码'
+                          component={QRCode}
                       />
                   </Scene>
             </Router>

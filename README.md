@@ -37,4 +37,20 @@
 
 1. 首先可以确定请求已经发出，并且用charles抓包可以得到结果，那么问题应该出现在前端。
 2. react-native js debug 模式并不能完全看到信息。推荐使用 vscode 断点调试。 控制台并未将catch的信息反馈给我 通过断点才看到catch到的错误。
-3. RN 不支持 xml2-cookies 库 因为xml2-cookies 不支持 blob  [xml2-cookies](https://github.com/pwnall/node-xhr2)
+3. RN 不支持 xml2-cookies 库 因为xml2-cookies 暂时不支持 [xml2-cookies](https://github.com/pwnall/node-xhr2)
+
+因为 ```global.location``` 为 undefined  导致直接catch
+
+解决办法：
+
+在config中配置，需要在config中配置 protocol 为空字符串  或者 ’https:‘
+
+* FormData
+* Blob
+* `file://` URIs
+* `data:` URIs
+* upload progress events
+* synchronous operation
+* Same-origin policy checks and CORS
+* cookie processing
+

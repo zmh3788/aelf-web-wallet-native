@@ -5,7 +5,7 @@
 */
 
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
 import {InputItem, Button, WhiteSpace} from '@ant-design/react-native';
 import config from '../../config/config';
 import aelf from '../../utils/initAElf';
@@ -44,26 +44,51 @@ export default class MultiTokenTransfer extends Component {
     }
 
     componentDidMount() {
-        const {wallet} = this.state;
-        const payload = {
-            symbol: 'ELF',
-            owner: wallet.address
-        };
+        // aelf.chain.getBlockHeight((error, result) => {
+        //     this.setState({
+        //         balance: result
+        //     });
+        // });
         aelf.chain.contractAtAsync(config.multiTokenAddress, this.wallet, (error, result) => {
             this.setState({
                 multiTokenContract: result
             });
-            result.GetBalance.call(payload, (error, result) => {
-                console.log(result);
-                this.setState({
-                    balance: result.balance
-                });
-            });
+            this.getbalance();
         });
     }
 
-    onClick = () => {
-        console.log('confirm');
+    getbalance() {
+        const {wallet, multiTokenContract} = this.state;
+        console.log(multiTokenContract);
+        const payload = {
+            symbol: 'ELF',
+            owner: wallet.address
+        };
+        multiTokenContract.GetBalance.call(payload, (error, result) => {
+            console.log(result);
+            if (result) {
+                this.setState({
+                    balance: result.balance
+                });
+            }
+        });
+    }
+    onClick() {
+        const {multiTokenContract} = this.state;
+        const payload = {
+            to: this.state.address,
+            amount: this.state.value,
+            symbol: 'ELF'
+        };
+        multiTokenContract.Transfer(payload, (error, result) => {
+            this.setState({
+                address: null,
+                value: null
+            });
+            setTimeout(() => {
+                this.getbalance();
+            }, 4000);
+        });
     }
 
     render() {

@@ -6,6 +6,7 @@
 
 import config from '../config/config';
 import AElf from '../../node_modules/aelf-sdk/dist/aelf.js';
+// import AElf from 'aelf-sdk';
 // const AElf = require('../../node_modules/aelf-sdk/dist/aelf.js').AElf;
 // const {default} = module.exports;
 // console.log('module.exports', default);

@@ -12,8 +12,12 @@ import {Button, WhiteSpace} from '@ant-design/react-native';
 export default class Home extends Component {
 
 
-    onClick = () => {
+    onClick() {
         Actions.multiTokenTransfer();
+    }
+
+    qrClick() {
+        Actions.qrCode();
     }
     render() {
         return (
@@ -24,6 +28,13 @@ export default class Home extends Component {
                     onPress={() => this.onClick()}
                 >
                     MultiTokenTransfer
+                </Button>
+                <WhiteSpace />
+                <Button
+                    type='primary'
+                    onPress={() => this.qrClick()}
+                >
+                    QRcode
                 </Button>
                 <WhiteSpace />
             </View>
